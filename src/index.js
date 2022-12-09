@@ -2,8 +2,7 @@ import * as readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 import { env } from 'node:process';
 import {showCurrentDirectory} from "./utils/showCurrentDirectory.js";
-import {upDirectory} from "./navigation/upDirectory.js";
-import {cdDirectory} from "./navigation/cdDirectory.js";
+import {inputParser} from "./utils/inputParser.js";
 
 let userName;
 
@@ -24,13 +23,11 @@ if(key) {
 
 
 rl.on('line', (input) => {
-    showCurrentDirectory();
-    console.log(`Received: ${input}`);
-    if(input === 'up'){upDirectory()}
-    else if(input.slice(0,2) === 'cd'){cdDirectory(input)}
-    else if(input === '.exit'){
-        console.log(`Thank you for using File Manager, ${userName}, goodbye!`)
+    if(input === '.exit'){
+        console.log(`Thank you for using File Manager, ${userName}, goodbye!`);
         rl.close();
+    } else {
+        inputParser(input);
     }
 }).on('SIGINT', () => {
     console.log(`Thank you for using File Manager, ${userName}, goodbye!`);
