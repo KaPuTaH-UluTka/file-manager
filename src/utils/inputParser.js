@@ -8,6 +8,10 @@ export const inputParser = (input) => {
         let [command, ...args] = input.split(' ');
 
         if (args.find(arg => arg.includes('"') || arg.includes("'"))) {
+            args = args
+                .join(' ')
+                .split(/["'] | ["']/)
+                .map((arg) => arg.replace(/"|'/g, ''));
         }
 
         const twoArgEvents = ['rn', 'cp', 'mv', 'compress', 'decompress'];
@@ -17,7 +21,7 @@ export const inputParser = (input) => {
 
         } else if (oneArgEvents.includes(command) && args.length === 1) {
             if(command === oneArgEvents[0]){
-                cdDirectory(input)
+                cdDirectory(args);
             } else {
 
             }
