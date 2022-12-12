@@ -1,7 +1,7 @@
-import {parse, resolve} from 'node:path'
-import {createReadStream, createWriteStream} from 'node:fs'
+import {parse, resolve} from 'node:path';
+import {createReadStream, createWriteStream} from 'node:fs';
 import {showCurrentDirectory} from "../utils/showCurrentDirectory.js";
-import { pipeline } from 'node:stream/promises'
+import { pipeline } from 'node:stream/promises';
 
 
 export const copyFile = async ([filePath, newDirectoryPath]) => {

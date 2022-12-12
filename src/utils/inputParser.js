@@ -4,6 +4,8 @@ import {list} from "../navigation/lsDirectory.js";
 import {copyFile} from "../fs/cp.js";
 import {renameFile} from "../fs/rn.js";
 import {moveFile} from "../fs/mv.js";
+import {decompressFile} from "../zip/decompress.js";
+import {compressFile} from "../zip/compress.js";
 
 export const inputParser = (input) => {
     try {
@@ -28,9 +30,9 @@ export const inputParser = (input) => {
             } else if(command === twoArgEvents[2]) {
                 moveFile(args);
             } else if(command === twoArgEvents[3]) {
-
+                compressFile(args);
             } else if(command === twoArgEvents[4]) {
-
+                decompressFile(args);
             }
         } else if (oneArgEvents.includes(command) && args.length === 1) {
             if(command === oneArgEvents[0]){
