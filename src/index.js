@@ -3,6 +3,9 @@ import { stdin as input, stdout as output } from 'node:process';
 import { env } from 'node:process';
 import {showCurrentDirectory} from "./utils/showCurrentDirectory.js";
 import {inputParser} from "./utils/inputParser.js";
+import * as os from "os";
+
+process.chdir(os.homedir());
 
 let userName;
 
