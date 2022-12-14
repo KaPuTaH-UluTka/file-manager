@@ -7,7 +7,7 @@ export const decompressFile = async ([filePath, destinationPath]) => {
     try {
         filePath = resolve(filePath);
         const { name, ext } = parse(filePath);
-        if (!ext.includes('.br')) console.error('invalid file extension');
+        if (!ext.includes('.br')) throw new Error('invalid file extension');
         destinationPath = resolve(destinationPath, name)
         const readStream = createReadStream(filePath);
         const writeStream = createWriteStream(destinationPath);
