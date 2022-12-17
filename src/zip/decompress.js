@@ -2,6 +2,7 @@ import {createReadStream, createWriteStream} from 'node:fs';
 import { createBrotliDecompress} from 'node:zlib';
 import {pipeline} from "node:stream/promises";
 import {parse, resolve} from "node:path";
+import {showCurrentDirectory} from "../utils/showCurrentDirectory.js";
 
 export const decompressFile = async ([filePath, destinationPath]) => {
     try {
@@ -12,7 +13,8 @@ export const decompressFile = async ([filePath, destinationPath]) => {
         const readStream = createReadStream(filePath);
         const writeStream = createWriteStream(destinationPath);
         const gzip = createBrotliDecompress();
-        return pipeline(readStream, gzip, writeStream)
+        await pipeline(readStream, gzip, writeStream);
+        showCurrentDirectory();
     } catch (err) {
         console.error('Operation failed');
     }
