@@ -8,7 +8,11 @@ export const list = () => {
             const directoryTable = files.map(dirent => {
                 return dirent.isDirectory() ? {name: dirent.name, type: "directory"} : {name: dirent.name, type: "file"}
             })
-            console.table(directoryTable);
+            console.table(directoryTable.sort((a, b) => {
+                if (a.type < b.type) return -1
+                else if (a.type > b.type) return 1
+                return 0;
+            }))
         })
 
     } catch (err) {
