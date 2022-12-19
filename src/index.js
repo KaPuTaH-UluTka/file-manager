@@ -19,7 +19,7 @@ if(key) {
     showCurrentDirectory();
     userName = env[key];
 } else {
-    console.log(`Welcome to the File Manager, 'anonymous'`);
+    console.log(`Welcome to the File Manager, anonymous`);
     showCurrentDirectory();
     userName = 'anonymous';
 }
