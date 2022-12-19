@@ -7,7 +7,11 @@ export const osHandler = ([args]) => {
             console.log(JSON.stringify(os.EOL));
         } else if (args === commands[1]) {
             console.table(os.cpus().map(({ model, speed }) => {
-                speed = speed / 1000 + 'GHz';
+                if(speed < 500) {
+                    speed = speed / 10 + 'GHz';
+                } else {
+                    speed = speed / 1000 + 'GHz';
+                }
                 return { model, speed }}))
         } else if (args === commands[2]) {
             console.log(os.homedir());

@@ -8,6 +8,6 @@ export const removeFile = async ([filePath]) => {
         await fs.unlink(filePath);
         showCurrentDirectory();
     } catch (err) {
-        console.error(Error('Operation failed'))
+        console.error(Error('Operation failed'));
     }
 };
